@@ -67,15 +67,15 @@ const CameraCapture: React.FC<{ onCapture: (image: UserImage) => void; onCancel:
     };
     
     return (
-        <div className="w-full flex flex-col items-center gap-4">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border-4 border-[var(--accent-primary)] shadow-lg">
+        <div className="w-full flex flex-col items-center gap-3 sm:gap-4 p-2">
+            <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden border-4 border-[var(--accent-primary)] shadow-lg">
                 <video ref={videoRef} autoPlay playsInline className="w-full h-full object-cover transform -scale-x-100"></video>
                 <canvas ref={canvasRef} width="512" height="512" className="hidden"></canvas>
             </div>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-            <div className="flex gap-4">
-                <button onClick={onCancel} className="px-6 py-2 bg-[var(--bg-accent)] text-[var(--text-primary)] font-semibold rounded-lg shadow-sm hover:bg-[var(--border-primary)] transition-colors">Cancel</button>
-                <button onClick={handleSnap} className="px-6 py-2 bg-[var(--accent-primary)] text-white font-semibold rounded-lg shadow-md hover:bg-[var(--accent-secondary)] transition-colors">Snap</button>
+            {error && <p className="text-red-500 text-sm text-center px-2">{error}</p>}
+            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
+                <button onClick={onCancel} className="flex-1 px-4 sm:px-6 py-2 bg-[var(--bg-accent)] text-[var(--text-primary)] font-semibold rounded-lg shadow-sm hover:bg-[var(--border-primary)] transition-colors text-sm">Cancel</button>
+                <button onClick={handleSnap} className="flex-1 px-4 sm:px-6 py-2 bg-[var(--accent-primary)] text-white font-semibold rounded-lg shadow-md hover:bg-[var(--accent-secondary)] transition-colors text-sm">Snap</button>
             </div>
         </div>
     );
@@ -106,11 +106,11 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ title, description, image,
 
     if (image) {
         return (
-             <div className="w-full flex flex-col items-center gap-4">
+             <div className="w-full flex flex-col items-center gap-3 sm:gap-4">
                 <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-green-400 group">
                     <img src={`data:${image.mimeType};base64,${image.base64}`} alt={title} className="w-full h-full object-cover"/>
                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                         <button onClick={() => onImageSelect(null)} className="flex items-center gap-2 px-4 py-2 bg-white/80 text-black font-semibold rounded-lg shadow-md hover:bg-white transition-colors">
+                         <button onClick={() => onImageSelect(null)} className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/90 text-black font-semibold rounded-lg shadow-md hover:bg-white transition-colors text-sm">
                             <ResetIcon /> Change
                         </button>
                      </div>
@@ -124,40 +124,40 @@ export const ImageSlot: React.FC<ImageSlotProps> = ({ title, description, image,
     }
 
     return (
-        <div className="w-full h-80 bg-[var(--bg-primary)] rounded-xl border-2 border-dashed border-[var(--border-secondary)] hover:border-[var(--accent-primary)] text-center transition-all duration-300 overflow-hidden">
-            <div className="flex flex-col items-center justify-center h-full p-6">
-                <div className="mb-4">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--accent-primary)] rounded-full mb-3">
+        <div className="w-full h-64 sm:h-72 lg:h-80 bg-[var(--bg-primary)] rounded-xl border-2 border-dashed border-[var(--border-secondary)] hover:border-[var(--accent-primary)] text-center transition-all duration-300 overflow-hidden">
+            <div className="flex flex-col items-center justify-center h-full p-3 sm:p-4 lg:p-6">
+                <div className="mb-3 sm:mb-4">
+                    <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[var(--accent-primary)] rounded-full mb-2 sm:mb-3">
                         {title === 'Person' ? (
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                         ) : (
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v7a2 2 0 002 2h4a2 2 0 002-2V5z" />
                             </svg>
                         )}
                     </div>
-                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{title}</h3>
-                    <p className="text-[var(--text-secondary)] text-sm">{description}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1 sm:mb-2">{title}</h3>
+                    <p className="text-[var(--text-secondary)] text-xs sm:text-sm px-1">{description}</p>
                 </div>
                 
                 <div className="space-y-2 w-full max-w-xs">
                     <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
                     <button 
                         onClick={() => fileInputRef.current?.click()} 
-                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--accent-primary)] text-white font-medium rounded-lg hover:bg-[var(--accent-secondary)] transition-colors"
+                        className="w-full flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-[var(--accent-primary)] text-white font-medium rounded-lg hover:bg-[var(--accent-secondary)] transition-colors text-sm"
                     >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
                         Upload Photo
                     </button>
                     <button 
                         onClick={() => setIsCameraOpen(true)} 
-                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-transparent text-[var(--text-secondary)] font-medium rounded-lg border border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)] transition-colors"
+                        className="w-full flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-transparent text-[var(--text-secondary)] font-medium rounded-lg border border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)] transition-colors text-sm"
                     >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>

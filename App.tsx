@@ -65,19 +65,19 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className="w-full max-w-4xl mx-auto bg-[var(--bg-secondary)] p-8 rounded-2xl shadow-lg border border-[var(--border-primary)]/20">
+        <div className="w-full max-w-4xl mx-auto bg-[var(--bg-secondary)] p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg border border-[var(--border-primary)]/20 relative overflow-hidden">
             {isLoading && <Loader />}
             
-            <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-3 text-[var(--text-primary)]">
+            <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 text-[var(--text-primary)]">
                     Virtual Try-On
                 </h2>
-                <p className="text-[var(--text-secondary)]">
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] px-2">
                     Upload a photo of yourself and a clothing item to see how it looks on you.
                 </p>
             </div>
         
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <ImageSlot 
                     title="Person" 
                     description="Upload a clear, front-facing photo." 
@@ -93,8 +93,8 @@ const App: React.FC = () => {
             </div>
 
             {error && (
-                <div className="text-center mb-6">
-                    <p className="text-red-600 bg-red-50 px-4 py-2 rounded-lg border border-red-200">{error}</p>
+                <div className="text-center mb-4 sm:mb-6">
+                    <p className="text-red-600 bg-red-50 dark:bg-red-900/20 dark:text-red-400 px-3 sm:px-4 py-2 rounded-lg border border-red-200 dark:border-red-800 text-sm sm:text-base">{error}</p>
                 </div>
             )}
             
@@ -102,7 +102,7 @@ const App: React.FC = () => {
                 <button 
                     onClick={handleGenerate} 
                     disabled={!personImage || !outfitImage || isLoading}
-                    className="px-8 py-3 bg-[var(--accent-primary)] text-white font-semibold rounded-lg hover:bg-[var(--accent-secondary)] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[var(--accent-primary)] text-white font-semibold rounded-lg hover:bg-[var(--accent-secondary)] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
                 >
                     Generate Try-On
                 </button>
@@ -114,7 +114,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] transition-colors duration-300">
       <Header />
-      <main className="flex-grow flex items-center justify-center p-4 md:p-8 min-h-[calc(100vh-140px)]">
+      <main className="flex-grow flex items-center justify-center p-2 sm:p-4 lg:p-8 min-h-[calc(100vh-140px)]">
         {renderContent()}
       </main>
       <Footer />

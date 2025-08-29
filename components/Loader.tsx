@@ -20,9 +20,9 @@ export const Loader: React.FC = () => {
     }, []);
 
   return (
-    <div className="absolute inset-0 bg-[var(--bg-secondary)]/80 backdrop-blur-sm flex flex-col justify-center items-center z-50 rounded-2xl transition-colors duration-300">
-      <div className="w-16 h-16 border-4 border-t-4 border-[var(--border-secondary)] border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
-      <p className="mt-4 text-lg font-semibold text-[var(--text-primary)] text-center px-4">{message}</p>
+    <div className="absolute inset-0 bg-[var(--bg-secondary)]/90 backdrop-blur-sm flex flex-col justify-center items-center z-50 rounded-2xl transition-colors duration-300 p-4">
+      <div className="w-12 h-12 sm:w-16 sm:h-16 border-3 sm:border-4 border-t-3 sm:border-t-4 border-[var(--border-secondary)] border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+      <p className="mt-3 sm:mt-4 text-sm sm:text-lg font-semibold text-[var(--text-primary)] text-center px-2 sm:px-4 leading-relaxed max-w-xs sm:max-w-md">{message}</p>
     </div>
   );
 };

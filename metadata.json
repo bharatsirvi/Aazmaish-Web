@@ -1,0 +1,7 @@
+{
+  "name": "SnapStyle",
+  "description": "An app where users can instantly see how clothes, accessories, or even makeup would look on them using their camera or by uploading a photo.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
